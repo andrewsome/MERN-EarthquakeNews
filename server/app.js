@@ -4,10 +4,10 @@ const express = require('express'),
   cors = require('cors'),
   PORT = process.env.PORT || 4000,
   db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '8wy177640',
-    database: 'test'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.MYSQL_DB
   }),
   app = express(),
   routes = require('./routes/router');

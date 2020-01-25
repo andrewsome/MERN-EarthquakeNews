@@ -2,10 +2,10 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 const mysql = require('mysql');
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '8wy177640',
-  database: 'test'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.MYSQL_DB
 });
 
 const fetch_data = async (req, res, next) => {
