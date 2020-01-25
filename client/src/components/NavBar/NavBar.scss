@@ -1,0 +1,26 @@
+.NavBar {
+  background: grey;
+  margin: 0;
+  padding: 0;
+  ul {
+    padding: 0;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    li {
+      margin: 0;
+      color: black;
+      list-style: none;
+      padding: 2rem;
+      min-width: 15rem;
+      cursor: pointer;
+      border: .1px solid black;
+      background: lightblue;
+      &:hover {
+        background: red;
+        box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+      }
+    }
+  }
+}

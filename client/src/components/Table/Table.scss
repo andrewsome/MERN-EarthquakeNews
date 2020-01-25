@@ -1,0 +1,29 @@
+.Table {
+  background: grey;
+  table {
+    border-collapse: collapse;
+    background: white;
+    table-layout: fixed;
+    width: 99%;
+    margin: auto auto 1rem auto;
+    thead {
+      tr {
+        border: 1px solid black;
+      }
+      th {
+        padding: .5rem;
+        border: 1px solid black;
+      }
+    }
+    tbody{
+      td {
+        padding: .5rem;
+        border: 1px solid black;
+        p {
+          cursor: pointer;
+          border: 1px solid black;
+        }
+      }
+    }
+  }
+}

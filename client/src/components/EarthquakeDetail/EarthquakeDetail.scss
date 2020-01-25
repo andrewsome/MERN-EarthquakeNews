@@ -1,0 +1,30 @@
+.EarthquakeDetail {
+  background: grey;
+  display: flex;
+  flex-direction: column;
+  .EarthquakeDetail__id-field {
+    background: white;
+    width: 90%;
+    margin: auto;
+    display: inline-block;
+    text-align: left;
+    padding: 2rem;
+    input {
+      margin: auto 0;
+      margin-right: 3rem;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+  }
+  .EarthquakeDetail__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background: white;
+    padding: 2rem;
+    width: 90%;
+    height: 20rem;
+    margin: 1rem auto;
+  }
+}
