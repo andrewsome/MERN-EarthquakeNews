@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Button from '../../Button';
+import Input from './Input';
 
 export default class RenderDetail extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class RenderDetail extends Component {
     const { editEnabled, data, temporaryData, handleTempData, handleEdit, handleSave } = this.props;
     const { tempPlace, tempMag, tempLat, tempLon } = temporaryData;
     const { id, mag, place, time, url, lat, lon } = data;
+    const NUMBER_REGEX = /^\d*\.?\d*$/;
     const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
     return (
       <div>
@@ -28,7 +30,7 @@ export default class RenderDetail extends Component {
           !editEnabled ?
             <p>Magnitude: {mag}</p> :
             <p>Magnitude:
-            <input
+            <Input
               type="text"
               name="tempMag"
               placeholder={mag}
@@ -40,7 +42,7 @@ export default class RenderDetail extends Component {
           !editEnabled ?
             <p>Place: {place}</p> :
             <p>Place:
-            <input
+            <Input
               type="text"
               name="tempPlace"
               placeholder={place}
@@ -56,13 +58,13 @@ export default class RenderDetail extends Component {
           !editEnabled ?
             <p>Coordinates: {lat},{lon}</p> :
             <p>Coordinates:
-            <input
+            <Input
               type="text"
               name="tempLat"
               placeholder={lat}
               value={tempLat}
               onChange={(event) => handleTempData(event)} />,
-            <input
+            <Input
               type="text"
               name="tempLon"
               placeholder={lon}
@@ -73,7 +75,14 @@ export default class RenderDetail extends Component {
         {
           !editEnabled ? 
             <Button onClick={handleEdit}>Edit</Button> :
-            <Button onClick={handleSave}>Save</Button>
+            <Button 
+              onClick={handleSave} 
+              disabled={
+                !NUMBER_REGEX.test(tempMag) ||
+                !NUMBER_REGEX.test(tempLat) ||
+                !NUMBER_REGEX.test(tempLon)
+              } 
+            >Save</Button>
         }
       </div>
     )

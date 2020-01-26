@@ -81,7 +81,7 @@ export default class EarthquakeDetail extends Component {
     const { id, time, url } = data;
     const { tempPlace, tempMag, tempLat, tempLon } = temporaryData;
     if (!tempPlace || !tempMag || !tempLat || !tempLon) {
-      alert('One of the field is empty');
+      alert('One of the fields is empty');
     } else {
       this.setState({
         data: {

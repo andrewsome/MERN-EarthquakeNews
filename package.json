@@ -1,0 +1,17 @@
+{
+  "name": "EarthquakeNews", 
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm install && npm start ",
+    "server": "cd server && npm install && npm start",
+    "dev":  "concurrently \"npm run server\" \"npm run client\"",
+    "test": "cd client && npm run test"
+  },
+  "repository": "https://github.com/andrewsome/MERN-EarthquakeNews.git",
+  "author": "Andrew <andrewzhu2012@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  }
+}

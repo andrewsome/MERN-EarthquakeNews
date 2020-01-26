@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 const ErrorMessage = styled.div`
   color:red;
-  padding-left:1rem;
+  font-size: 0.8rem;
 `;
 
 const StyledInput = styled.input`
-  margin: 1.5rem;
+  margin: 1rem 1.5rem;
 `;
 
 export default class Input extends Component {

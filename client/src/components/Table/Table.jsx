@@ -60,6 +60,7 @@ export default class Table extends Component {
     const { data } = this.state;
     return (
       <div className="Table">
+        <AddNewLine />
         {
           !data ? '' : 
           <table>
@@ -116,13 +117,13 @@ export default class Table extends Component {
                         <input type="text" onChange={(event) => this.handleInput(event, id)}/>
                         </td>
                     }
-                    <td>
+                    {/* <td>
                       {
                         !editEnabled ?
                           <p onClick={(event) => this.handleEdit(event, id)}>Edit</p> :
                           <p onClick={(event) => this.handleSave(event, id)}>Save</p>
                       }
-                    </td>
+                    </td> */}
                   </tr>
                 )
               })}
@@ -130,7 +131,6 @@ export default class Table extends Component {
             </tbody>
           </table>
         }
-        <AddNewLine />
       </div>  
     );
   };
