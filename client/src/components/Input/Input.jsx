@@ -7,7 +7,8 @@ const ErrorMessage = styled.div`
 `;
 
 const StyledInput = styled.input`
-  margin: 1rem 1.5rem;
+  margin: 0 1.5rem;
+  line-height: 1rem;
 `;
 
 export default class Input extends Component {
@@ -30,7 +31,8 @@ export default class Input extends Component {
 
   getValidationMessageFromValidations = () => {
     const { validations } = this.props;
-
+    if (validations === undefined ){
+    console.log(this.props)}
     const invalidValidation = validations.find((validation) => !!this.isValidationInvalid(validation));
 
     return invalidValidation && invalidValidation.message;
@@ -42,7 +44,6 @@ export default class Input extends Component {
     const validationMessage = this.getValidationMessageFromValidations()
     return (
       <>
-        <div>
           <StyledInput
             {...this.props}
             onChange={(e) => {
@@ -55,7 +56,6 @@ export default class Input extends Component {
           {dirty && validationMessage && (
             <ErrorMessage>{validationMessage}</ErrorMessage>
           )}
-        </div>
       </>
     )
   }

@@ -33,20 +33,21 @@ export default class RenderDetail extends Component {
             )
           }
           return (
-            <div key={key}>
+            <p key={key}>
               {
                 !editEnabled ?
-                  <p>{label}: {value}</p> :
-                  <span>{label}:
-                  <Input
-                    type="text"
-                    value={value}
-                    validations={validations}
-                    placeholder={label}
-                    onChange={(event) => handleTempInputData(event, key)} />
-                  </span>
+                  <>{label}: {value}</> :
+                  <>
+                    <span>{label}:</span>
+                    <Input
+                      type="text"
+                      value={value}
+                      validations={validations}
+                      placeholder={label}
+                      onChange={(event) => handleTempInputData(event, key)} />
+                  </>
               }
-            </div>
+            </p>
           )
         })}
         {
