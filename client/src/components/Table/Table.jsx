@@ -72,13 +72,28 @@ export default class Table extends Component {
       }
     });
 
+    this.sendingData(this.state.data[key])
   }
 
-  // sendingData = async () => {
-  //   const { data } = this.state;
-  //   const { id, mag, time, place, url, lat, lon } = data;
-
-  // }
+  sendingData = async (data) => {
+    const { id } = data;
+    const response = await fetch(`http://localhost:4000/api/getdetail/${id}`);
+    const json = await response.json();
+    if (json) {
+      const setting = {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      }
+      const response = await fetch(`http://localhost:4000/api/updatedetail/${id}`, setting);
+      const json = await response.json();
+      console.log(json)
+    }
+    
+  }
 
 
   render() {

@@ -49,7 +49,7 @@ export default class AddNewLine extends Component {
           value: 'now',
         },
         url: {
-          label: 'Mre Info',
+          label: 'Mroe Info',
           value: '',
           validations: [{
             validator: validator.isNotEmpty,
@@ -103,7 +103,8 @@ export default class AddNewLine extends Component {
     })
   }
 
-  SendData = async (event, data) => {    
+  SendData = async (event, data) => {
+    event.preventDefault();
     const { id, mag, place, url, lat, lon } = data;
     const body = {
       id: id.value,
@@ -114,7 +115,6 @@ export default class AddNewLine extends Component {
       lat: lat.value,
       lon: lon.value
     }
-    event.preventDefault();
     const setting = {
       method: 'POST',
       headers: {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './EarthquakeDetail.scss';
 import DetailSearchBar from './DetailSearchBar';
 import RenderDetail from './RenderDetail';
+import { validator } from '../Table/Input';
 
 export default class EarthquakeDetail extends Component {
   constructor(props) {
@@ -10,15 +11,6 @@ export default class EarthquakeDetail extends Component {
       earthquakeId: '',
       data: '',
       editEnabled: false,
-      temporaryData: {
-        tempId: '',
-        tempMag: '',
-        tempPlace: '',
-        tempTime: '',
-        tempUrl: '',
-        tempLat: '',
-        tempLon: '',
-      }
     }
   }
 
@@ -29,15 +21,75 @@ export default class EarthquakeDetail extends Component {
         const response = await fetch(`http://localhost:4000/api/getdetail/${id}`);
         const data = await response.json();
         this.setState({
-          data: data[0],
-          temporaryData: {
-            tempId: data.id,
-            tempMag: data.mag,
-            tempPlace: data.place,
-            tempTime: data.time,
-            tempUrl: data.url,
-            tempLat: data.lat,
-            tempLon: data.lon,
+          data: {
+            id: {
+              label: 'ID',
+              value: data[0].id,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              }]
+            },
+            mag: {
+              label: 'Magnitude',
+              value: data[0].mag,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              },
+              {
+                validator: validator.isNumber,
+                message: 'Number please'
+              }]
+            },
+            place: {
+              label: 'Place',
+              value: data[0].place,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              }]
+            },
+            time: {
+              label: 'Time',
+              value: data[0].time,
+            },
+            url: {
+              label: 'Mroe Info',
+              value: data[0].url,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              },
+              {
+                validator: validator.isUrl,
+                message: 'please enter a valid url',
+              }]
+            },
+            lat: {
+              label: 'Latitude',
+              value: data[0].lat,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              },
+              {
+                validator: validator.isNumber,
+                message: 'Number please'
+              }]
+            },
+            lon: {
+              label: 'Lontidude',
+              value: data[0].lon,
+              validations: [{
+                validator: validator.isNotEmpty,
+                message: 'Can not be empty',
+              },
+              {
+                validator: validator.isNumber,
+                message: 'Number please'
+              }]
+            }
           }
         });
       } catch {
@@ -56,20 +108,21 @@ export default class EarthquakeDetail extends Component {
     });
   }
 
-  handleTempInputData = (event) => {
-    const { target: { name, value } } = event;
+  handleTempInputData = (event, key) => {
+    const { target: { value } } = event;
     this.setState(prevState => {
       return {
-        temporaryData: {
-          ...prevState.temporaryData,
-          [name]: value,
-          tempId: this.state.data.id,
-          tempTime: this.state.data.time,
-          tempUrl: this.state.data.url
+        data: {
+          ...prevState.data,
+          [key]: {
+            ...prevState.data[key],
+            value,
+          }
         }
       }
     })
   }
+  
   handleEdit = () => {
     this.setState({
       editEnabled: true,
@@ -77,46 +130,38 @@ export default class EarthquakeDetail extends Component {
   }
 
   handleSave = () => {
-    const { temporaryData, data } = this.state;
-    const { id, time, url } = data;
-    const { tempPlace, tempMag, tempLat, tempLon } = temporaryData;
-    if (!tempPlace || !tempMag || !tempLat || !tempLon) {
-      alert('One of the fields is empty');
-    } else {
-      this.setState({
-        data: {
-          id: id,
-          mag: tempMag,
-          place: tempPlace,
-          time: time,
-          url: url,
-          lat: tempLat,
-          lon: tempLon
-        },
-        editEnabled: false,
-      });
-      this.sendingUpdate();
-    }
+    this.setState({
+      editEnabled: false
+    })
+    this.sendingUpdate(this.state.data);
   }
 
-  sendingUpdate = async () => {
-    const { temporaryData } = this.state;
-    const { tempId } = temporaryData;
+  sendingUpdate = async (data) => {
+    const { id, mag, place, time, url, lat, lon } = data;
+    const body = {
+      id: id.value,
+      mag: mag.value,
+      place: place.value,
+      time: time.value,
+      url: url.value,
+      lat: lat.value,
+      lon: lon.value
+    }
     const setting = {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(temporaryData),
+      body: JSON.stringify(body),
     }
-    const response = await fetch(`http://localhost:4000/api/updatedetail/${tempId}`, setting);
+    const response = await fetch(`http://localhost:4000/api/updatedetail/${id.value}`, setting);
     const json = await response.json();
     console.log(json)
   }
 
   render() {
-    const { earthquakeId, editEnabled, data, temporaryData } = this.state;
+    const { earthquakeId, editEnabled, data } = this.state;
     return (
       <div className="EarthquakeDetail">
         <DetailSearchBar 
@@ -127,7 +172,6 @@ export default class EarthquakeDetail extends Component {
         <RenderDetail 
           data={data} 
           editEnabled={editEnabled} 
-          temporaryData={temporaryData} 
           handleTempInputData={this.handleTempInputData}
           handleEdit={this.handleEdit}
           handleSave={this.handleSave} 

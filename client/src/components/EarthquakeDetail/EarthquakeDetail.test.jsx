@@ -63,10 +63,6 @@ describe('<EarthquakeDetail />', () => {
         expect(props).toHaveProperty('editEnabled', wrapper.state().editEnabled);
       });
 
-      it('passes temporaryData', () => {
-        expect(props).toHaveProperty('temporaryData', wrapper.state().temporaryData);
-      });
-
       it('passes handleTempInputData', () => {
         expect(props).toHaveProperty('handleTempInputData', wrapper.instance().handleTempInputData);
       });

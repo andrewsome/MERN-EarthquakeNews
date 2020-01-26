@@ -8,7 +8,7 @@ const db = mysql.createConnection({
 
 const update_detail = (req, res) => {
   let data = req.body
-  let sql = `UPDATE latestNews SET place = '${data.tempPlace}', mag = ${data.tempMag}, lat = ${data.tempLat}, lon = ${data.tempLon} WHERE id = '${req.params.id}'`;
+  let sql = `UPDATE latestNews SET place = '${data.id}', mag = ${data.mag}, lat = ${data.lat}, lon = ${data.lon} WHERE id = '${req.params.id}'`;
   let query = db.query(sql, (err, result) => {
     if(err) console.log(err);
     console.log(result);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import Button from '../../Button';
-import Input from './Input';
+// import Input from './Input';
+import Input from '../../Table/Input';
 
 export default class RenderDetail extends Component {
   render() {
@@ -18,70 +18,52 @@ export default class RenderDetail extends Component {
   }
 
   renderDetail = () => {
-    const { editEnabled, data, temporaryData, handleTempInputData, handleEdit, handleSave } = this.props;
-    const { tempPlace, tempMag, tempLat, tempLon } = temporaryData;
-    const { id, mag, place, time, url, lat, lon } = data;
-    const NUMBER_REGEX = /^\d*\.?\d*$/;
-    const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
+    const { editEnabled, data, handleTempInputData, handleEdit, handleSave } = this.props;
+    // const { id, mag, place, time, url, lat, lon } = data;
+    // const NUMBER_REGEX = /^\d*\.?\d*$/;
+    // const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
     return (
       <div>
-        <p>ID: {id}</p> 
-        {
-          !editEnabled ?
-            <p>Magnitude: {mag}</p> :
-            <p>Magnitude:
-            <Input
-              type="text"
-              name="tempMag"
-              placeholder={mag}
-              value={tempMag}
-              onChange={(event) => handleTempInputData(event)} />
-            </p>
-        }
-        {
-          !editEnabled ?
-            <p>Place: {place}</p> :
-            <p>Place:
-            <Input
-              type="text"
-              name="tempPlace"
-              placeholder={place}
-              value={tempPlace}
-              onChange={(event) => handleTempInputData(event)} />
-            </p>
-        }
-        <p>Time: {formatedTime}</p>
-        <p>More information:
-          <a href={url}>{url}</a>
-        </p>
-        {
-          !editEnabled ?
-            <p>Coordinates: {lat},{lon}</p> :
-            <p>Coordinates:
-            <Input
-              type="text"
-              name="tempLat"
-              placeholder={lat}
-              value={tempLat}
-              onChange={(event) => handleTempInputData(event)} />,
-            <Input
-              type="text"
-              name="tempLon"
-              placeholder={lon}
-              value={tempLon}
-              onChange={(event) => handleTempInputData(event)} />
-            </p>
-        }
+        {Object.keys(data).map(key => {
+          const { label, value, validations } = data[key];
+          if (key === 'id' || key === 'time') {
+            return (
+              <p key={key}>{label}: {value}</p>
+            )
+          }
+          if (key === 'url') {
+            return (
+              <p key={key}>{label}: <a href={value}>{value}</a></p>
+            )
+          }
+          return (
+            <div key={key}>
+              {
+                !editEnabled ?
+                  <p>{label}: {value}</p> :
+                  <span>{label}:
+                  <Input
+                    type="text"
+                    value={value}
+                    validations={validations}
+                    placeholder={label}
+                    onChange={(event) => handleTempInputData(event, key)} />
+                  </span>
+              }
+            </div>
+          )
+        })}
         {
           !editEnabled ? 
             <Button onClick={handleEdit}>Edit</Button> :
             <Button 
               onClick={handleSave} 
               disabled={
-                !NUMBER_REGEX.test(tempMag) ||
-                !NUMBER_REGEX.test(tempLat) ||
-                !NUMBER_REGEX.test(tempLon)
-              } 
+                !data.place.value ||
+                !data.lat.value ||
+                !data.lon.value ||
+                !data.mag.value
+                }
             >Save</Button>
         }
       </div>

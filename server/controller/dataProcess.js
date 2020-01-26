@@ -35,7 +35,7 @@ const create_table = (req, res, next) => {
     db.query(sql, (err, result) => {
       if(error) return console.log(error);
       console.log(results);
-      let sql = 'CREATE TABLE latestNews(id VARCHAR(20) NOT NULL, mag FLOAT NOT NULL, place VARCHAR(100) NOT NULL, time VARCHAR(40) NOT NULL, url VARCHAR(100) NOT NULL, lat FLOAT NOT NULL, lon FLOAT NOT NULL, PRIMARY KEY(id, mag))'
+      let sql = 'CREATE TABLE latestNews(id VARCHAR(20) NOT NULL, mag VARCHAR(20) NOT NULL, place VARCHAR(100) NOT NULL, time VARCHAR(40) NOT NULL, url VARCHAR(100) NOT NULL, lat VARCHAR(20) NOT NULL, lon VARCHAR(20) NOT NULL, PRIMARY KEY(id, mag))'
       db.query(sql, (err, result) => {
         if (err) throw err;
         res.data = requiredDatas;
