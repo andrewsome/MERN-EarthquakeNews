@@ -19,4 +19,30 @@
 
 ## preparation
 
-  
+  * Node and yarn
+  * MySQL Database: local or phpAdmin
+
+## Installation
+
+  * Clone the repo
+  * You may need those code for your .env file
+
+  ```
+  PORT=4000
+  DB_HOST=localhost
+  DB_USER=root
+  DB_PASS=8wy177640
+  MYSQL_DB=test
+  SECRET_KEY=secret
+  ```
+  * Install dependencies `yarn install` for client and server folder.
+  * To run the app `yarn start` for client and server folder.
+  * OR you can run `yarn run dev` this will do them all.
+
+  ![demo](http://g.recordit.co/qlMB1VtvAW.gif)
+
+## Demo
+
+  ![demo](http://g.recordit.co/mpgfohocnn.gif)
+
+### hope you have a wonderful day!

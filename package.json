@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "client": "cd client && npm install && npm start ",
-    "server": "cd server && npm install && npm start",
-    "dev":  "concurrently \"npm run server\" \"npm run client\"",
-    "test": "cd client && npm run test"
+    "client": "cd client && yarn install && yarn start ",
+    "server": "cd server && yarn install && yarn start",
+    "dev":  "concurrently \"yarn run server\" \"yarn run client\"",
+    "test": "cd client && yarn run test"
   },
   "repository": "https://github.com/andrewsome/MERN-EarthquakeNews.git",
   "author": "Andrew <andrewzhu2012@gmail.com>",
