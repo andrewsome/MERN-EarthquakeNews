@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../Button';
-// import Input from './Input';
-import Input from '../../Table/Input';
+import Input from '../../Input';
 
 export default class RenderDetail extends Component {
   render() {
@@ -19,9 +18,6 @@ export default class RenderDetail extends Component {
 
   renderDetail = () => {
     const { editEnabled, data, handleTempInputData, handleEdit, handleSave } = this.props;
-    // const { id, mag, place, time, url, lat, lon } = data;
-    // const NUMBER_REGEX = /^\d*\.?\d*$/;
-    // const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
     return (
       <div>
         {Object.keys(data).map(key => {

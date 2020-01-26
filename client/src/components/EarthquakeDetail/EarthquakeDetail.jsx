@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './EarthquakeDetail.scss';
 import DetailSearchBar from './DetailSearchBar';
 import RenderDetail from './RenderDetail';
-import { validator } from '../Table/Input';
+import { validator } from '../Input';
 
 export default class EarthquakeDetail extends Component {
   constructor(props) {

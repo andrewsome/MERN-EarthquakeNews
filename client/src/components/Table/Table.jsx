@@ -37,7 +37,7 @@ export default class Table extends Component {
         data: {
           ...prevState.data,
           [key]: {
-            ...prevState.data[key],            
+            ...prevState.data[key],
             [name]: value,
           }
         }
@@ -71,7 +71,6 @@ export default class Table extends Component {
         }
       }
     });
-
     this.sendingData(this.state.data[key])
   }
 
@@ -92,85 +91,77 @@ export default class Table extends Component {
       const json = await response.json();
       console.log(json)
     }
-    
   }
-
 
   render() {
     const { data } = this.state;
-    console.log(data)
     return (
       <div className="Table">
         <AddNewLine />
-        {
-          !data ? '' : 
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Magnitude</th>
-                <th>Place</th>
-                <th>Time</th>
-                <th>More info</th>
-                <th>Latitude</th>
-                <th>Longtitude</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(data).map(key => {
-                const { lat, lon, id, mag, place, time, url, editEnabled } = data[key];
-                const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
-                return (
-                  <tr key={key}>
-                    <td>{id}</td>
-                    {
-                      !editEnabled ? 
-                        <td>{mag}</td> : 
-                        <td>
-                          <input type="text" name='mag' onChange={(event) => this.handleInput(event, key)} />
-                        </td>
-                    }
-                    {
-                      !editEnabled ? 
-                        <td>{place}</td> : 
-                        <td>
-                          <input type="text" name='place' onChange={(event) => this.handleInput(event, key)}/>
-                        </td>
-                    }
-                    <td>{formatedTime}</td>
-                    <td>
-                      <a href={url}>click here</a>
-                    </td>
-                    {
-                      !editEnabled ? 
-                        <td>{lat}</td> : 
-                        <td>
-                          <input type="text" name='lat' onChange={(event) => this.handleInput(event, key)}/>
-                        </td>
-                    }
-                    {
-                      !editEnabled ? 
-                      <td>{lon}</td> : 
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Magnitude</th>
+              <th>Place</th>
+              <th>Time</th>
+              <th>More info</th>
+              <th>Latitude</th>
+              <th>Longtitude</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(data).map(key => {
+              const { lat, lon, id, mag, place, time, url, editEnabled } = data[key];
+              const formatedTime = moment(time).format("YYYY-MM-DD HH:mm:ss");
+              return (
+                <tr key={key}>
+                  <td>{id}</td>
+                  {
+                    !editEnabled ?
+                      <td>{mag}</td> :
                       <td>
-                        <input type="text" name='lon' onChange={(event) => this.handleInput(event, key)}/>
-                        </td>
-                    }
-                    <td>
-                    {!editEnabled ? 
+                        <input type="text" name='mag' onChange={(event) => this.handleInput(event, key)} />
+                      </td>
+                  }
+                  {
+                    !editEnabled ?
+                      <td>{place}</td> :
+                      <td>
+                        <input type="text" name='place' onChange={(event) => this.handleInput(event, key)} />
+                      </td>
+                  }
+                  <td>{formatedTime}</td>
+                  <td>
+                    <a href={url}>click here</a>
+                  </td>
+                  {
+                    !editEnabled ?
+                      <td>{lat}</td> :
+                      <td>
+                        <input type="text" name='lat' onChange={(event) => this.handleInput(event, key)} />
+                      </td>
+                  }
+                  {
+                    !editEnabled ?
+                      <td>{lon}</td> :
+                      <td>
+                        <input type="text" name='lon' onChange={(event) => this.handleInput(event, key)} />
+                      </td>
+                  }
+                  <td>
+                    {!editEnabled ?
                       <button onClick={(event) => this.handleEdit(event, key)}>Edit</button> :
                       <button onClick={(event) => this.handleSave(event, key)}>Save</button>
                     }
-                        {console.log(editEnabled)}
-                    </td>
-                  </tr>
-                )
-              })}
-                
-            </tbody>
-          </table>
-        }
-      </div>  
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   };
 };

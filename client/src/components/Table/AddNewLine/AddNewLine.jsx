@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../Button';
 import styled from 'styled-components';
-import Input, { validator } from '../Input';
+import Input, { validator } from '../../Input';
 import moment from 'moment';
 
 export const StyledForm = styled.form`
