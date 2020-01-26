@@ -56,7 +56,7 @@ export default class EarthquakeDetail extends Component {
     });
   }
 
-  handleTempData = (event) => {
+  handleTempInputData = (event) => {
     const { target: { name, value } } = event;
     this.setState(prevState => {
       return {
@@ -128,7 +128,7 @@ export default class EarthquakeDetail extends Component {
           data={data} 
           editEnabled={editEnabled} 
           temporaryData={temporaryData} 
-          handleTempData={this.handleTempData}
+          handleTempInputData={this.handleTempInputData}
           handleEdit={this.handleEdit}
           handleSave={this.handleSave} 
         />

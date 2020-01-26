@@ -18,7 +18,7 @@ export default class RenderDetail extends Component {
   }
 
   renderDetail = () => {
-    const { editEnabled, data, temporaryData, handleTempData, handleEdit, handleSave } = this.props;
+    const { editEnabled, data, temporaryData, handleTempInputData, handleEdit, handleSave } = this.props;
     const { tempPlace, tempMag, tempLat, tempLon } = temporaryData;
     const { id, mag, place, time, url, lat, lon } = data;
     const NUMBER_REGEX = /^\d*\.?\d*$/;
@@ -35,7 +35,7 @@ export default class RenderDetail extends Component {
               name="tempMag"
               placeholder={mag}
               value={tempMag}
-              onChange={(event) => handleTempData(event)} />
+              onChange={(event) => handleTempInputData(event)} />
             </p>
         }
         {
@@ -47,7 +47,7 @@ export default class RenderDetail extends Component {
               name="tempPlace"
               placeholder={place}
               value={tempPlace}
-              onChange={(event) => handleTempData(event)} />
+              onChange={(event) => handleTempInputData(event)} />
             </p>
         }
         <p>Time: {formatedTime}</p>
@@ -63,13 +63,13 @@ export default class RenderDetail extends Component {
               name="tempLat"
               placeholder={lat}
               value={tempLat}
-              onChange={(event) => handleTempData(event)} />,
+              onChange={(event) => handleTempInputData(event)} />,
             <Input
               type="text"
               name="tempLon"
               placeholder={lon}
               value={tempLon}
-              onChange={(event) => handleTempData(event)} />
+              onChange={(event) => handleTempInputData(event)} />
             </p>
         }
         {
