@@ -19,28 +19,23 @@ export default class LatestNews extends Component {
     });
   }
 
-  renderForm = () => {
-    return (
-      <form className="Latest__info" onClick={event => this.handleLatestData(event)}>
-        <p>Retrieve the latest 100 earthquakes and saves them into the Database</p>
-        <Button type="submit">Retrieve</Button>
-      </form>
-    )
-  }
-
-  renderTable = () => {
+  render() {
     const { requiredDatas } = this.state;
     return (
-      <div>
-        {!requiredDatas ? '' : <Table requiredDatas={requiredDatas} />}
-      </div>
-    )
-  }
-
-  render() {
-    return (
       <div className="Latest">
-        {!this.state.requiredDatas ? this.renderForm() : this.renderTable()}
+        {
+          !requiredDatas ? 
+          <form 
+            className="Latest__info" 
+            onSubmit={event => this.handleLatestData(event)}
+          >
+            <p>Retrieve the latest 100 earthquakes and saves them into the Database</p>
+            <Button type="submit">Retrieve</Button>
+          </form> : 
+          <Table 
+            requiredDatas={requiredDatas} 
+          />
+        }
       </div>
     )
   }

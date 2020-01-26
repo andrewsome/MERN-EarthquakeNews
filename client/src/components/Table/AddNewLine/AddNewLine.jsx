@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Input, { validator } from '../Input';
 import moment from 'moment';
 
-const StyledForm = styled.form`
+export const StyledForm = styled.form`
   display: flex;
   background: white;
   padding: 1rem;
