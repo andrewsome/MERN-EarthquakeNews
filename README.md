@@ -28,7 +28,6 @@
   * You may need those code for your .env file
 
   ```
-  PORT=4000
   DB_HOST=localhost
   DB_USER=root
   DB_PASS=8wy177640

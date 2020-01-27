@@ -32,7 +32,7 @@ export default class Input extends Component {
   getValidationMessageFromValidations = () => {
     const { validations } = this.props;
     if (validations === undefined ){
-    console.log(this.props)}
+    console.log(validations)}
     const invalidValidation = validations.find((validation) => !!this.isValidationInvalid(validation));
 
     return invalidValidation && invalidValidation.message;

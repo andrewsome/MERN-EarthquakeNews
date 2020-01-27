@@ -1,4 +1,4 @@
-const NUMBER_REGEX = /^\d*\.?\d*$/;
+const NUMBER_REGEX = /^-?[0-9]\d*(\.\d+)?$/;
 const URL_REGEX = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/; // eslint-disable-line
 export default{
   isNotEmpty: (value) => !!value,
