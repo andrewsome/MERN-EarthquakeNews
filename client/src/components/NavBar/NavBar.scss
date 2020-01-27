@@ -24,3 +24,88 @@
     }
   }
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .NavBar {
+    ul {
+      margin: 0;
+      margin-top: 0.5rem;
+      flex-direction: column;
+      justify-content: none;
+      li {
+        cursor: pointer;
+        border: none;
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .NavBar {
+    ul {
+      margin: 3rem;
+      flex-direction: column;
+      li {
+        cursor: pointer;
+        border: none;
+      }
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .NavBar {
+    ul {
+      li {
+        border: 0.1rem solid black;
+        margin: 0.2rem;
+        cursor: pointer;
+        border: none;
+      }
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .NavBar {
+    ul {
+      padding: 0;
+      margin: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      li {
+        margin: 0;
+        color: black;
+        list-style: none;
+        padding: 2rem;
+        min-width: 15rem;
+        cursor: pointer;
+        border: .1px solid black;
+        background: lightblue;
+        &:hover {
+          background: red;
+          box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+        }
+      }
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .NavBar {
+      ul {
+        margin: 0;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        justify-content: none;
+        li {
+          cursor: pointer;
+          border: none;
+        }
+      }
+    }
+  }
+}

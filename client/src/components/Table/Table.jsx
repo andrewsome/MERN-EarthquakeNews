@@ -226,7 +226,7 @@ export default class Table extends Component {
                     if (subKey === 'time') {
                       return (
                         <td key={subKey}>
-                          {moment(value).format()}
+                          {moment(value).format('LLLL')}
                         </td>
                       )
                     }

@@ -27,3 +27,158 @@
     }
   }
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Table {
+    overflow-x: auto;
+    table {
+      border-collapse: collapse;
+    background: white;
+    table-layout: fixed;
+    width: 99%;
+    margin: auto auto 1rem auto;
+      thead {
+        display: none;
+        tr {
+          border: 1px solid black;
+        }
+        th {
+          padding: .5rem;
+          border: 1px solid black;
+        }
+      }
+      tbody{
+        tr {
+          display: flex;
+        flex-direction: column ;
+        }
+        td {
+          padding: .5rem;
+          border: 1px solid black;
+          p {
+            cursor: pointer;
+            border: 1px solid black;
+          }
+        }
+      }
+    }
+  }
+  .__AddNewForm {
+    background: white;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .__InputFieldBlock {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      .__InputFieldLabel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .__AddNewForm {
+    background: white;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .__InputFieldBlock {
+      display: grid;
+      grid-template-columns: 250px 0fr;
+      .__InputFieldLabel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .__TimeRow {
+        padding-left: 10rem;
+      }
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .__AddNewForm {
+    background: white;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .__InputFieldBlock {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      .__InputFieldLabel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .__TimeRow {
+        padding-left: 10rem;
+      }
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .__AddNewForm {
+    background: white;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .__InputFieldBlock {
+      display: flex;
+      margin: 0.1rem;
+      padding: 0.5rem;
+      .__InputFieldLabel {
+        padding-right: 1rem;
+      }
+      .__TimeRow {
+        padding-left: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .__AddNewForm {
+    background: white;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .__InputFieldBlock {
+      display: flex;
+      margin: 0.1rem;
+      padding: 0.5rem;
+      .__InputFieldLabel {
+        padding-right: 1rem;
+      }
+      .__TimeRow {
+        padding-left: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}

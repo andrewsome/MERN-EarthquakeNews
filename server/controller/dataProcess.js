@@ -12,7 +12,7 @@ const fetch_data = async (req, res, next) => {
   const response = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
   const data = await response.json();
   const currentDate = data.metadata.generated;
-  console.log(moment(currentDate).format())
+  console.log(moment(currentDate).format('LLLL'))
   const filtedData = [];
   data.features.filter(feature => {
     const { properties} = feature;
@@ -53,7 +53,7 @@ const save_data = (req, res) => {
       id: requiredData.id,
       mag: requiredData.properties.mag,
       place: requiredData.properties.place,
-      time: moment(requiredData.properties.time).format(),
+      time: moment(requiredData.properties.time).format('LLLL'),
       url: requiredData.properties.url,
       lat: requiredData.geometry.coordinates[0],
       lon: requiredData.geometry.coordinates[1],

@@ -9,8 +9,8 @@ describe('<AddNewLine />', () => {
     wrapper = shallow((<AddNewLine />));
   });
 
-  it('renders StyledForm', () => {
-    expect(wrapper.find(StyledForm).props()).toHaveProperty('SendData', wrapper.instance().onSubmit);
+  it('renders form', () => {
+    expect(wrapper.find('form').props()).toHaveProperty('SendData', wrapper.instance().onSubmit);
   });
 
   it('renders Input', () => {

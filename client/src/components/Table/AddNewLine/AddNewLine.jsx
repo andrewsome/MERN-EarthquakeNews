@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../Button';
-import styled from 'styled-components';
 import Input, { validator } from '../../Input';
 import moment from 'moment';
-
-export const StyledForm = styled.form`
-  display: flex;
-  background: white;
-  padding: 1rem;
-  margin: 1rem;
-`;
 
 export default class AddNewLine extends Component {
   constructor(props) {
@@ -49,7 +41,7 @@ export default class AddNewLine extends Component {
           value: 'now',
         },
         url: {
-          label: 'Mroe Info',
+          label: 'More Info',
           value: '',
           validations: [{
             validator: validator.isNotEmpty,
@@ -110,7 +102,7 @@ export default class AddNewLine extends Component {
       id: id.value,
       mag: mag.value,
       place: place.value,
-      time: moment().format(),
+      time: moment().format('LLLL'),
       url: url.value,
       lat: lat.value,
       lon: lon.value
@@ -133,26 +125,33 @@ export default class AddNewLine extends Component {
     return (
       <>
       <h4>Add Earthquake New out of system</h4>
-      <StyledForm onSubmit={(event) => this.SendData(event, data)}>
+      <form className="__AddNewForm" onSubmit={(event) => this.SendData(event, data)}>
         {Object.keys(data).map(key => {
           const { label, value, validations } = data[key];
           if (label === 'Time') {
             return (
-              <div key={label}>
-                {label}: now &nbsp;
+              <div key={label} className='__InputFieldBlock'>
+                <label className='__InputFieldLabel' >
+                  {label}: 
+                </label>
+                <span className='__TimeRow'>now</span> 
               </div>
             )
           }
           return (
-            <div key={label}>
-              {label}: 
+            <div key={label} className='__InputFieldBlock'>
+              <label className='__InputFieldLabel'>
+                {label}: 
+              </label>
+              <span className='__InputField'>
               <Input 
+                className='__InputField'
                 type="text" 
                 placeholder={label}
                 value={value}
                 validations={validations}
                 onChange={(event) => this.handleInput(event, key)}/>
-              &nbsp;
+              </span>
             </div>
           )
         })}
@@ -166,7 +165,7 @@ export default class AddNewLine extends Component {
           !data.lon.value ||
           !data.mag.value
           }>Submit</Button>
-      </StyledForm>
+      </form>
       </>
     )
   }

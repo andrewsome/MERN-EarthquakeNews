@@ -7,8 +7,41 @@ const ErrorMessage = styled.div`
 `;
 
 const StyledInput = styled.input`
-  margin: 0 1.5rem;
-  line-height: 1rem;
+  margin: 1rem 1.5rem;
+  line-height: 3rem;
+  font-size: 2.5rem;
+  width: 20rem;
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    margin: 1rem 1.5rem;
+    line-height: 2.5rem;
+    font-size: 2rem;
+    width: 20rem;
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    margin: 0.1rem 1.5rem;
+    line-height: 3rem;
+    font-size: 2rem;
+    width: 20rem;
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    margin: 1rem 1.5rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    width: 20rem;
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    margin: 0;
+    line-height: 2rem;
+    font-size: 1rem;
+    width: 10rem;
+  }
 `;
 
 export default class Input extends Component {
