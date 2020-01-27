@@ -14,8 +14,8 @@
   - [ ] Login and / or middleware authentiction(i.e. Passport).
   - [ ] Permissions.
   - [ ] Search/ Filter feature
-  - [ ] Responsive design
-  - [ ] Testing
+  - [x] Responsive design
+  - [x] Testing
 
 ## preparation
 
@@ -28,6 +28,7 @@
   * You may need those code for your .env file
 
   ```
+  PORT=4000
   DB_HOST=localhost
   DB_USER=root
   DB_PASS=8wy177640
