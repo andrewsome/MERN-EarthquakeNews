@@ -7,13 +7,13 @@ export default function NavBar() {
     <div className='NavBar'>
       <ul>
         <Link to='/'>
-          <li>Top 10</li>
+          <li><strong>Top 10</strong></li>
         </Link>
         <Link to='/detail'>
-          <li>Earthquake Detail</li>
+          <li><strong>Earthquake Detail</strong></li>
         </Link>
         <Link to='/latest'>
-          <li>Retrieve Latest</li>
+          <li><strong>Retrieve Latest</strong></li>
         </Link>
       </ul>
     </div>

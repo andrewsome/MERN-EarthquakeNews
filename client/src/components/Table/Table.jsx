@@ -195,6 +195,7 @@ export default class Table extends Component {
     return (
       <div className="Table">
         <AddNewLine />
+        <h4>Recent Earthquake News</h4>
         <table>
           <thead>
             <tr>

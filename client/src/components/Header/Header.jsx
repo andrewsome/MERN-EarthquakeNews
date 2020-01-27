@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  font-size: 2rem;
   background: lightblue;
   text-align: center;
   height: 6rem;

@@ -131,6 +131,8 @@ export default class AddNewLine extends Component {
   render() {
     const { data } = this.state;
     return (
+      <>
+      <h4>Add Earthquake New out of system</h4>
       <StyledForm onSubmit={(event) => this.SendData(event, data)}>
         {Object.keys(data).map(key => {
           const { label, value, validations } = data[key];
@@ -165,6 +167,7 @@ export default class AddNewLine extends Component {
           !data.mag.value
           }>Submit</Button>
       </StyledForm>
+      </>
     )
   }
 }

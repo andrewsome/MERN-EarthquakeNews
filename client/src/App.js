@@ -17,7 +17,7 @@ function App() {
       {/* <Route path='/login' component={Login} /> */}
       <Wrapper>
         {/* <StatusBar /> */}
-        <Header>Earthquake News</Header>
+        <Header>This App can show your rencent Earthquake News</Header>
         <NavBar />
         <Switch>
           <Route path='/' exact component={Main} />
